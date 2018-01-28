@@ -1,3 +1,21 @@
-<p>
-  artists works!
-</p>
+<div>
+  <div class ="row">
+    <div class = "col-xs-3">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newArtist" placeholder="Add New Artist" class="form-control">
+        <input type="text" [(ngModel)]="newArtistAlbum" placeholder="Add New Artist Album" class="form-control">
+      </div>
+    </div>
+    <div class = "col-xs-3">
+      <a class="btn btn-block btn-lg btn-primary" (click)= "addNewArtistAndAlbum(newArtist, newArtistAlbum)">Add</a>
+    </div>
+  </div>
+  <div class ="row">
+      <ul>
+          <!-- <li *ngFor="let artist of artistsList">
+            {{ artist.name }}
+            {{ artist.album }}
+          </li> -->
+        </ul>
+  </div>
+</div>

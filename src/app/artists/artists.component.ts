@@ -32,7 +32,7 @@ export class ArtistsComponent implements OnInit {
       let perArtistItem = artistItem;
       if (perArtistItem['artist'] == inputArtist) {
         for (let artistItemAlbum of perArtistItem['albums']) {
-
+          
         }
       }
     }

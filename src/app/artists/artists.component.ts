@@ -9,7 +9,8 @@ import { artistAlbumsHashMap } from '../commons/commons';
 export class ArtistsComponent implements OnInit {
 
 
-  artistsList: artistAlbumsHashMap = {};
+  artistsListTemp: artistAlbumsHashMap = {};
+  artistsListDisplay: Array<Object> = [];
   artist: Object;
 
   constructor() { }
@@ -18,10 +19,25 @@ export class ArtistsComponent implements OnInit {
   }
   
   addNewArtistAndAlbum(inputArtist: string, inputArtistAlbum?: string) {
-    if (this.artistsList[inputArtist] == null) {
-      this.artistsList[inputArtist] = new Set();
+    if (this.artistsListTemp[inputArtist] == null) {
+      this.artistsListTemp[inputArtist] = new Set();
     }
-    this.artistsList[inputArtist].add(inputArtistAlbum);
+    this.artistsListTemp[inputArtist].add(inputArtistAlbum);
+    //Make post call to add new artist item.
+
+    //Make get call to retrieve all artists from backend and set to map variable
+    //TEST
+    //iterate display map, for each artist found, add to albums value if not already present
+    for (let artistItem of this.artistsListDisplay) {
+      let perArtistItem = artistItem;
+      if (perArtistItem['artist'] == inputArtist) {
+        for (let artistItemAlbum of perArtistItem['albums']) {
+
+        }
+      }
+    }
+    this.artistsListDisplay.push({ 'artist' : inputArtist, 'albums' : inputArtistAlbum});
+
   }
 
 }

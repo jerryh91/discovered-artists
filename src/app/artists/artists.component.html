@@ -12,10 +12,14 @@
   </div>
   <div class ="row">
       <ul>
-          <!-- <li *ngFor="let artist of artistsList">
+          <li *ngFor="let artist of artistsListDisplay">
             {{ artist.name }}
-            {{ artist.album }}
-          </li> -->
+            <ul>
+              <li *ngFor="let album of artist.albums">
+                  {{ artist.album }}
+              </li>
+            </ul>
+          </li>
         </ul>
   </div>
 </div>

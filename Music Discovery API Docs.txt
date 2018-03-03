@@ -1,0 +1,23 @@
+
+Create artist item
+POST: api-music-discovery/v1/artists
+Request Body: 
+{
+	'artist' : '<artistValue>',
+	'album' : '<albumValue>',
+	'songs' : ['<song1>', '<song2>', ...]
+}
+Response Body: 
+{
+	
+}
+
+Retrieve all artists
+GET: api-music-discovery/v1/artists
+
+Retrieve all albums for 1 artist
+GET: api-music-discovery/v1/artists/<artistId>/albums
+
+Retrieve all songs for 1 artist
+GET: api-music-discovery/v1/artists/<artistId>/songs
+

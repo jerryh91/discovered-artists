@@ -23,10 +23,8 @@ export class ArtistsComponent implements OnInit {
       this.artistsListTemp[inputArtist] = new Set();
     }
     this.artistsListTemp[inputArtist].add(inputArtistAlbum);
-    //Make post call to add new artist item.
-
-    //Make get call to retrieve all artists from backend and set to map variable
-    //TEST
+    
+    /*TEST
     //iterate display map, for each artist found, add to albums value if not already present
     for (let artistItem of this.artistsListDisplay) {
       let perArtistItem = artistItem;
@@ -36,6 +34,12 @@ export class ArtistsComponent implements OnInit {
         }
       }
     }
+    */
+
+    //Make post call to add new artist item.
+    
+    //Make get call to retrieve all artists from backend and set to map variable
+    
     this.artistsListDisplay.push({ 'artist' : inputArtist, 'albums' : inputArtistAlbum});
 
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { artistAlbumsHashMap } from '../commons/commons';
+import { ArtistsService} from './service/artists.service';
 
 @Component({
   selector: 'app-artists',
@@ -13,9 +14,13 @@ export class ArtistsComponent implements OnInit {
   artistsListDisplay: Array<Object> = [];
   artist: Object;
 
-  constructor() { }
+  constructor(private artistsService: ArtistsService) { }
 
   ngOnInit() {
+    //Retrieve list of existing artists, maybe with a few other artist info.
+    this.artistsService.getArtistsList().subscribe(
+      
+    )
   }
   
   addNewArtistAndAlbum(inputArtist: string, inputArtistAlbum?: string) {

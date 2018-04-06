@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { ArtistsDetailComponent } from './artists-detail/artists-detail.component';
+import { ArtistsService} from './artists/service/artists.service';
 
 const appRoutes: Routes = [
   { path: 'artists', component: ArtistsComponent },
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [ArtistsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

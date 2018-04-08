@@ -52,7 +52,7 @@ export class ArtistsComponent implements OnInit {
     
     //Make get call to retrieve all artists from backend and set to map variable
     
-    this.artistsListDisplay.push({ 'artist' : inputArtist, 'albums' : inputArtistAlbum});
+    this.artistsListDisplay.push({ 'name' : inputArtist, 'album' : inputArtistAlbum});
 
   }
 

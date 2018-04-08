@@ -15,11 +15,11 @@
           <li *ngFor="let artist of artistsListDisplay">
             {{ artist.name }}
             <ul>
-              <li *ngFor="let album of artist.albums">
-                  {{ artist.album }}
+              <li *ngFor="let album of artist.album">
+                  {{ album }}
               </li>
             </ul>
           </li>
-        </ul>
+      </ul>
   </div>
 </div>

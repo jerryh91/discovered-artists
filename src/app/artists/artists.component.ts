@@ -17,9 +17,16 @@ export class ArtistsComponent implements OnInit {
   constructor(private artistsService: ArtistsService) { }
 
   ngOnInit() {
-    //Retrieve list of existing artists, maybe with a few other artist info.
+    //Retrieve list of existing artists, maybe with a few artist info.
     this.artistsService.getArtistsList().subscribe(
-      
+      (data) => {
+        if (data != null && data['data'] && data['data'].length > 0) {
+          this.artistsListDisplay = data['data'];
+        }
+      }, 
+      (error) => {
+        console.error(error);
+      }
     )
   }
   

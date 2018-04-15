@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { artistAlbumsHashMap } from '../commons/commons';
 import { ArtistsService} from './service/artists.service';
-
+import { artistAlbumObject } from '../domain/artist-album-object';
 @Component({
   selector: 'app-artists',
   templateUrl: './artists.component.html',
@@ -12,13 +12,13 @@ export class ArtistsComponent implements OnInit {
 
   artistsListTemp: artistAlbumsHashMap = {};
   artistsListDisplay: Array<Object> = [];
-  artist: Object;
+  artistAlbum: artistAlbumObject;
 
   constructor(private artistsService: ArtistsService) { }
 
   ngOnInit() {
-    //Retrieve list of existing artists, maybe with a few artist info.
-    this.artistsService.getArtistsList().subscribe(
+    //Retrieve list of existing artists, maybe with a few artist info: "most recent album/single/ep"
+    this.artistsService.getArtistList().subscribe(
       (data) => {
         if (data != null && data['data'] && data['data'].length > 0) {
           this.artistsListDisplay = data['data'];
@@ -30,12 +30,7 @@ export class ArtistsComponent implements OnInit {
     )
   }
   
-  addNewArtistAndAlbum(inputArtist: string, inputArtistAlbum?: string) {
-    if (this.artistsListTemp[inputArtist] == null) {
-      this.artistsListTemp[inputArtist] = new Set();
-    }
-    this.artistsListTemp[inputArtist].add(inputArtistAlbum);
-    
+  addNewArtistAndAlbum(inputArtist: string, inputAlbum: string) {    
     /*TEST
     //iterate display map, for each artist found, add to albums value if not already present
     for (let artistItem of this.artistsListDisplay) {
@@ -49,11 +44,22 @@ export class ArtistsComponent implements OnInit {
     */
 
     //Make post call to add new artist item.
-    
-    //Make get call to retrieve all artists from backend and set to map variable
-    
-    this.artistsListDisplay.push({ 'name' : inputArtist, 'album' : inputArtistAlbum});
+    //If successful add: 
+    //Return: artist added in response, and most recent album by artist
+    let inputArtistAlbum = new artistAlbumObject (inputArtist, inputAlbum);
+    this.artistsService.addArtistAndAlbum(inputArtistAlbum).subscribe(
+      (data) => {
+        if (data != null && data['data'] && data['data'].length > 0) {
+         
+        }
+      }, 
+      (error) => {
+        console.error(error);
+      }
+    )
 
+    // this.artistsListDisplay.push({ 'name' : inputArtist, 'album' : inputArtistAlbum});
+    
   }
 
 }

@@ -9,10 +9,10 @@ export class ArtistsService {
   constructor(private http: HttpClient) { }
 
   getArtistList() {
-    return this.http.get('apis/' + url_constants.apiUrlRoutes.artist + '/v1' + url_constants.artistsUrlRoutes.artistsList)
+    return this.http.get('/' + url_constants.apiUrlRoutes.artist + '/v1' + url_constants.artistsUrlRoutes.artistsList)
   }
 
   addArtistAndAlbum(artistAlbum: artistAlbumObject) {
-    return this.http.post<artistAlbumObject>('apis/' + url_constants.apiUrlRoutes.artist + '/v1' + url_constants.artistsUrlRoutes.artistsList, artistAlbum)
+    return this.http.post<artistAlbumObject>('/' + url_constants.apiUrlRoutes.artist + '/v1' + url_constants.artistsUrlRoutes.artistsList, artistAlbum)
   }
 }

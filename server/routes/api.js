@@ -15,7 +15,10 @@ router.get('/' + api_artist + '/' + version_1 + '/artists', (req, res) => {
            });
 });
 
+//Reconcile with current artist list
+//Return most recent album for the artist submitted.
 router.post('/' + api_artist + '/' + version_1 + '/artists', (req, res) => {
+  console.log("req");
   res.json({
             'data' : [{'name' : 'blink-182', 'album' : ['california']}, {'name' : 'tiny moving parts', 'album' : ['swell']}]
            });

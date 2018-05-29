@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { artistAlbumsHashMap } from '../commons/commons';
 import { ArtistsService} from './service/artists.service';
 import { artistAlbumObject } from '../domain/artist-album-object';
 @Component({
@@ -9,8 +8,6 @@ import { artistAlbumObject } from '../domain/artist-album-object';
 })
 export class ArtistsComponent implements OnInit {
 
-
-  artistsListTemp: artistAlbumsHashMap = {};
   artistsListDisplay: Array<Object> = [];
   artistAlbum: artistAlbumObject;
 
@@ -18,7 +15,7 @@ export class ArtistsComponent implements OnInit {
 
   ngOnInit() {
     //Retrieve list of existing artists, maybe with a few artist info: "most recent album/single/ep"
-    this.artistsService.getArtistList().subscribe(
+    this.artistsService.getArtistList([{"key" : "sort", "value" : "desc"}, {"key": "type", "value": "album"}]).subscribe(
       (data) => {
         if (data != null && data['data'] && 
             data['data'].length > 0) {
@@ -32,18 +29,6 @@ export class ArtistsComponent implements OnInit {
   }
   
   addNewArtistAndAlbum(inputArtist: string, inputAlbum: string) {    
-    /*TEST
-    //iterate display map, for each artist found, add to albums value if not already present
-    for (let artistItem of this.artistsListDisplay) {
-      let perArtistItem = artistItem;
-      if (perArtistItem['artist'] == inputArtist) {
-        for (let artistItemAlbum of perArtistItem['albums']) {
-          
-        }
-      }
-    }
-    */
-
     //Make post call to add new artist item.
     //If successful add: 
     //Return: artist added in response, and most recent album by artist
@@ -59,8 +44,6 @@ export class ArtistsComponent implements OnInit {
       }
     )
 
-    // this.artistsListDisplay.push({ 'name' : inputArtist, 'album' : inputArtistAlbum});
-    
   }
 
 }

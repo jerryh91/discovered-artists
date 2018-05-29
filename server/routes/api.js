@@ -16,11 +16,16 @@ router.get('/' + api_artist + '/' + version_1 + '/artists', (req, res) => {
 });
 
 //Reconcile with current artist list
-//Return most recent album for the artist submitted.
+//Return latest submitted album/single.
 router.post('/' + api_artist + '/' + version_1 + '/artists', (req, res) => {
-  console.log("req");
+  console.log("req", req.body);
+  if (req.body && req.body['artist'] && req.body['album'] &&
+     req.body['artist'].trim().length > 0  && req.body['album'].trim().length > 0) {
+
+    current_artist_list.push ({'artist' : req.body['artist'], 'album' : req.body['album']});
+  }
   res.json({
-            'data' : [{'name' : 'blink-182', 'album' : ['california']}, {'name' : 'tiny moving parts', 'album' : ['swell']}]
+            'data' : current_artist_list
            });
 });
 

@@ -20,7 +20,8 @@ export class ArtistsComponent implements OnInit {
     //Retrieve list of existing artists, maybe with a few artist info: "most recent album/single/ep"
     this.artistsService.getArtistList().subscribe(
       (data) => {
-        if (data != null && data['data'] && data['data'].length > 0) {
+        if (data != null && data['data'] && 
+            data['data'].length > 0) {
           this.artistsListDisplay = data['data'];
         }
       }, 

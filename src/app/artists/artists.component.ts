@@ -36,7 +36,7 @@ export class ArtistsComponent implements OnInit {
     this.artistsService.addArtistAndAlbum(inputArtistAlbum).subscribe(
       (data) => {
         if (data != null && data['data'] && data['data'].length > 0) {
-         
+          this.artistsListDisplay = data['data'];
         }
       }, 
       (error) => {
